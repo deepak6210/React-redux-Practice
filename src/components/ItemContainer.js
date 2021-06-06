@@ -1,14 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { buyCake, buyIceCream } from '../redux'
+import { Button } from 'antd';
 
 function ItemContainer(props) {
+    if(props.item > 0){
     return (
         <div>
             <h2>Items - {props.item} </h2>
-            <button onClick={props.buyItem}>Buy Items</button>
+            <Button type="primary" onClick={props.buyItem}>Buy Items</Button>
         </div>
-    )
+    )} else{
+        return <h2>Out of stock</h2>
+    }
 }
 
 const mapStateToProps = (state, ownProps) => {
